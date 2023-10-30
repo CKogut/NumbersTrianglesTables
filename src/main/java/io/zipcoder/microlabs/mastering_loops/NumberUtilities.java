@@ -1,28 +1,31 @@
 package io.zipcoder.microlabs.mastering_loops;
 
-// Test for this method is testing for odd numbers?
-public class NumberUtilities {
-    public static String getEvenNumbers(int start, int stop) {
-        String even = "";
 
-        for (int i = start; i < stop; i++) {
-            if (i % 2 == 0) {
-                even = even + String.valueOf(i);
-            }
-        }
-        return even;
+public class NumberUtilities {
+    public static boolean isEven(int num){
+        return (num % 2) == 0;
     }
 
-    // Test for this method is testing for even numbers?
-    public static String getOddNumbers(int start, int stop) {
-        String odd = "";
+    public static String getEvenNumbers(int start, int stop) {
+        StringBuilder even = new StringBuilder();
 
         for (int i = start; i < stop; i++) {
-            if (i % 2 == 1) {
-                odd = odd + String.valueOf(i);
+            if (isEven(i)) {
+                even.append(i);
             }
         }
-        return odd;
+        return even.toString();
+    }
+
+    public static String getOddNumbers(int start, int stop) {
+        StringBuilder odd = new StringBuilder();
+
+        for (int i = start; i < stop; i++) {
+            if (!isEven(i)) {
+                odd.append(i);
+            }
+        }
+        return odd.toString();
     }
 
 
@@ -36,42 +39,31 @@ public class NumberUtilities {
         return squares;
     }
 
-    public static String getRange(int start) {
-        String range = "";
-
-        for (int i = 0; i < start; i++) {
-            range = range + String.valueOf(i);
-        }
-        return range;
+    public static String getRange(int stop) {
+        return getRange(0, stop,1);
     }
 
     public static String getRange(int start, int stop) {
-        String range = "";
-
-        for (int i = start; i < stop; i++) {
-            range = range + String.valueOf(i);
-        }
-        return range;
+        return getRange(start, stop, 1);
     }
 
 
     public static String getRange(int start, int stop, int step) {
-        String range = "";
+        StringBuilder range = new StringBuilder();
 
         for (int i = start; i < stop; i = i + step) {
-            range = range + String.valueOf(i);
+            range.append(i);
         }
-        return range;
+        return range.toString();
     }
 
 
     public static String getExponentiations(int start, int stop, int step, int exponent) {
-        String exponentiate = "";
+        StringBuilder pow = new StringBuilder();
 
         for (int i = start; i < stop; i = i+step) {
-            int result = (int) Math.pow(i, exponent);
-            exponentiate = exponentiate + String.valueOf(result);
+            pow.append((int) Math.pow(i, exponent));
         }
-        return exponentiate;
+        return pow.toString();
     }
 }
